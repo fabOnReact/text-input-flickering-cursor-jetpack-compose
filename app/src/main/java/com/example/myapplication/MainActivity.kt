@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.PlatformTextStyle
@@ -22,6 +23,7 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,7 +37,8 @@ class MainActivity : ComponentActivity() {
             MyApplicationTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
+                    // Greeting("Android")
+                    BasicTextFieldDemo();
                 }
             }
         }
@@ -44,16 +47,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BasicTextFieldDemo() {
-    var textState by remember { mutableStateOf(TextFieldValue("Hello World")) }
-    Column {
-        BasicTextField(value = textState, onValueChange = {
-            textState = it
-        })
-        Text("The textfield has this text: " + textState.text)
-    }
-    /* I var value by remember { mutableStateOf("") }
+    var value by remember { mutableStateOf("") }
     BasicTextField(
-        modifier = Modifier.border(1.dp, Color.Red).padding(4.dp),
+        modifier = Modifier
+            .border(1.dp, Color.Red)
+            .padding(4.dp),
         value = value,
         onValueChange = { value = it },
         textStyle = TextStyle(
@@ -69,15 +67,4 @@ fun BasicTextFieldDemo() {
             platformStyle = PlatformTextStyle(includeFontPadding = false),
         ),
     )
-     */
-}
-
-
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    MyApplicationTheme {
-        Greeting("Android")
-    }
 }
