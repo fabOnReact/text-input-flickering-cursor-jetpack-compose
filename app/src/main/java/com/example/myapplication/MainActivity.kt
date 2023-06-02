@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun BasicTextFieldDemo() {
-    var value by remember { mutableStateOf("") }
+    var value by remember { mutableStateOf("d") }
     BasicTextField(
         modifier = Modifier
             .border(1.dp, Color.Red)
@@ -59,7 +59,7 @@ fun BasicTextFieldDemo() {
                 Font(R.font.circular_std_medium_500, FontWeight.Normal),
             ),
             fontSize = 16.sp,
-            lineHeight = 20.sp,
+            lineHeight = 100.sp,
             lineHeightStyle = LineHeightStyle(
                 LineHeightStyle.Alignment.Center,
                 LineHeightStyle.Trim.None
